@@ -1,15 +1,16 @@
-// create web server
-import http from 'http';
+// Import required modules
+const express = require('express');
 
-const hostname = '127.0.0.1';
-const port = 3000;
+// Create an instance of express
+const app = express();
+const port = 3000; // Choose any port number you prefer
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!');
+// Define routes
+app.get('/', (req, res) => {
+    res.send('Hello, World!'); // Respond with 'Hello, World!' for requests to the root URL
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+// Start the server
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
 });
