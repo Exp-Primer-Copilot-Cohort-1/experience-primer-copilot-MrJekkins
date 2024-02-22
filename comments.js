@@ -1,20 +1,15 @@
 // create web server
-// Import the built-in 'http' module
-const http = require('http');
+import http from 'http';
 
-// Create an HTTP server
+const hostname = '127.0.0.1';
+const port = 3000;
+
 const server = http.createServer((req, res) => {
-    // Set the response header (status code and content type)
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-
-    // Write the response body
-    res.write('Hello World!');
-
-    // End the response
-    res.end();
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello, World!');
 });
 
-// Listen on port 8080
-server.listen(8080, () => {
-    console.log('Server is running at http://localhost:8080/');
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
